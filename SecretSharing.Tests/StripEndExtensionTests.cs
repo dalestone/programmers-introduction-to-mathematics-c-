@@ -1,8 +1,9 @@
+using SecretSharing.Extensions;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Polynomial.Tests.StripEndExtensionTests
+namespace SecretSharing.Tests
 {
     public class StripEndExtensionTests
     {

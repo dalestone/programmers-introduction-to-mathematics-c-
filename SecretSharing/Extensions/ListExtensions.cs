@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Polynomial
+namespace SecretSharing.Extensions
 {
     public static class ListExtensions
     {

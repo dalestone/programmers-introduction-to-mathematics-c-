@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SecretSharing.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Polynomial
+namespace SecretSharing
 {
     /// <summary>
     /// A class representing a polynomial as a list of coefficients with no 

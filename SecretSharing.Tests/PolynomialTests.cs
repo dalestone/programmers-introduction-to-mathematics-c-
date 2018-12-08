@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Polynomial.Tests
+namespace SecretSharing.Tests
 {
     public class PolynomialTests
     {
