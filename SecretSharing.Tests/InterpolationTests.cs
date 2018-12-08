@@ -5,7 +5,7 @@ using Xunit;
 
 namespace SecretSharing.Tests
 {
-    public class InterpolateTests
+    public class InterpolationTests
     {
         [Fact]
         public void Test_Interpolate_Empty()
