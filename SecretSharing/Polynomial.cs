@@ -32,14 +32,14 @@ namespace SecretSharing
 
         public Polynomial Add(Polynomial polynomial)
         {
-            var newCoefficients = Coefficients.Zip(polynomial.Coefficients, (co1, co2) => co1 + co2).ToList();
+            var newCoefficients = Coefficients.ZipLongest(polynomial.Coefficients, (co1, co2) => co1 + co2).ToList();
            
             return new Polynomial(newCoefficients);
         }
 
         public Polynomial Subtract(Polynomial polynomial)
         {
-            var newCoefficients = Coefficients.Zip(polynomial.Coefficients, (co1, co2) => co1 - co2).ToList();
+            var newCoefficients = Coefficients.ZipLongest(polynomial.Coefficients, (co1, co2) => co1 - co2).ToList();
 
             return new Polynomial(newCoefficients);
         }

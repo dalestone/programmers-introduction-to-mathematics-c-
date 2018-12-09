@@ -5,7 +5,7 @@ using Xunit;
 
 namespace SecretSharing.Tests
 {
-    public class StripEndExtensionTests
+    public class StripEndTests
     {
         [Fact]
         public void Test_StripEnd_Empty()

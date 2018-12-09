@@ -12,7 +12,7 @@ namespace SecretSharing.Tests
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                new Interpolation().Interpolate(new List<Point> { });
+                new Interpolation().Interpolate(new List<int[]> { });
             });                       
         }
 
@@ -21,10 +21,10 @@ namespace SecretSharing.Tests
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                new Interpolation().Interpolate(new List<Point>
+                new Interpolation().Interpolate(new List<int[]>
                 {
-                    new Point(1, 2),
-                    new Point(1, 3)
+                    new int[]{ 1, 2 },
+                    new int[]{ 1, 3 }
                 });
             });            
         }
@@ -32,13 +32,26 @@ namespace SecretSharing.Tests
         [Fact]
         public void Test_Interpolate_Degree_0()
         {
-            throw new NotImplementedException();
+            var expected = new List<int> { 2 };
+            var actual = new Interpolation().Interpolate(new List<int[]>
+            {
+                new int[] { 1, 2 }
+            }).Coefficients;
+
+            Assert.Equal(expected, actual);            
         }
 
         [Fact]
         public void Test_Interpolate_Degree_1()
         {
-            throw new NotImplementedException();
+            var expected = new List<int> { 1, 1 };
+            var actual = new Interpolation().Interpolate(new List<int[]>
+            {
+                new int[] { 1, 2 },
+                new int[] { 2, 3 }
+            }).Coefficients;
+
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
