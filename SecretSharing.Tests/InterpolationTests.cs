@@ -19,7 +19,14 @@ namespace SecretSharing.Tests
         [Fact]
         public void Test_Interpolate_Repeated_X_Values()
         {
-            throw new NotImplementedException();
+            Assert.Throws<ArgumentException>(() =>
+            {
+                new Interpolation().Interpolate(new List<Point>
+                {
+                    new Point(1, 2),
+                    new Point(1, 3)
+                });
+            });            
         }
 
         [Fact]
