@@ -10,7 +10,10 @@ namespace SecretSharing.Tests
         [Fact]
         public void Test_Interpolate_Empty()
         {
-            throw new NotImplementedException();
+            Assert.Throws<ArgumentException>(() =>
+            {
+                new Interpolation().Interpolate(new List<Point> { });
+            });                       
         }
 
         [Fact]
