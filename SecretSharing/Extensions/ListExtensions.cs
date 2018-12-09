@@ -19,25 +19,19 @@ namespace SecretSharing.Extensions
             return value.Take(i + 1).ToList();
         }
 
-        public static List<int> ZipLongest(this List<int> values, List<int> second, Func<int, int, int> resultSelector)
+        public static List<int> ZipLongest(this List<int> first, List<int> second, Func<int, int, int> resultSelector)
         {
-            var diff = Math.Abs(values.Count - second.Count);
-
-            if (values.Count > second.Count)
-            {
-                second.AddRange(Enumerable.Range(0, diff).Select(item => 0));
-            }
-            else
-            {
-                values.AddRange(Enumerable.Range(0, diff).Select(item => 0));
-            }
-
             var newList = new List<int>();
+            var diff = Math.Abs(first.Count - second.Count);
+            var placeholders = Enumerable.Range(0, diff).Select(item => 0);
 
-            for (var i = 0; i < values.Count; i++)
-            {
-                newList.Add(resultSelector.Invoke(values[i], second[i]));
-            }
+            if (first.Count > second.Count)
+                second.AddRange(placeholders);
+            else
+                first.AddRange(placeholders);
+
+            for (var i = 0; i < first.Count; i++)
+                newList.Add(resultSelector.Invoke(first[i], second[i]));
 
             return newList;
         }
