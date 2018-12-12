@@ -13,7 +13,7 @@ namespace SecretSharing
     /// </summary>
     public class Polynomial
     {
-        public List<int> Coefficients { get; }
+        public List<int> Coefficients { get; } = new List<int>();
         private string Indeterminate { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace SecretSharing
 
         public Polynomial Multiply(Polynomial polynomial)
         {
-            List<int> newCoeffs = Enumerable.Range(0, Coefficients.Count + polynomial.Coefficients.Count - 1)
+            List<int> newCoeffs = Enumerable.Range(0, Length() + polynomial.Length() - 1)
                                 .Select(c => 0)
                                 .ToList();
 
@@ -68,6 +68,11 @@ namespace SecretSharing
         public Polynomial Negate()
         {
             return new Polynomial(Coefficients.Select(c => -1 * c).ToList());
+        }
+
+        public int Length()
+        {
+            return Coefficients.Count;
         }
 
         /// <summary>
@@ -92,26 +97,7 @@ namespace SecretSharing
        
         public override string ToString()
         {
-            var expr = "";
-
-            for (var i = 0; i < Coefficients.Count; i++)
-            {
-                if (i > 0)
-                {
-                    expr += $"{Coefficients[i]} x^{i}";
-
-                    if (i + 1 != Coefficients.Count)
-                    {
-                        expr += " + ";
-                    }
-                }
-                else
-                {
-                    expr += $"{Coefficients[i]} + ";
-                }
-            }
-
-            return expr;
+            return string.Join(" + ", Coefficients.Select((coefficient, i) => i > 0 ? $"{coefficient} {Indeterminate}^{i}" : $"{coefficient}"));
         }
     }
 }

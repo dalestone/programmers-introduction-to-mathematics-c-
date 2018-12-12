@@ -57,7 +57,30 @@ namespace SecretSharing.Tests
         [Fact]
         public void Test_Interpolate_Degree_3()
         {
-            throw new NotImplementedException();
+            var points = new List<int[]> {
+                new int[] { 1, 1 },
+                new int[] { 2, 0 },
+                new int[] { -3, 2 },
+                new int[] { 4, 4 }
+            };
+            var actualPolynomial = new Interpolation().Interpolate(points);
+            var expectedEvaluations = points;
+            var actualEvaluations = new List<int>();
+
+            foreach(var item in expectedEvaluations)
+            {
+                actualEvaluations.Add(actualPolynomial.EvaluateAt(item[0]));
+            }
+                
+            //points = [(1, 1), (2, 0), (-3, 2), (4, 4)]
+            //actual_polynomial = interpolate(points)
+            //expected_evaluations = points
+            //actual_evaluations = [(x, actual_polynomial.evaluateAt(x))
+            //                      for (x, y) in expected_evaluations]
+
+            //for (p1, p2) in zip(expected_evaluations, actual_evaluations):
+            //    for (a, b) in zip(p1, p2):
+            //        assert_that(a).is_close_to(b, EPSILON)
         }
     }
 }

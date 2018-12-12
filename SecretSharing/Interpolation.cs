@@ -20,14 +20,21 @@ namespace SecretSharing
             if (new HashSet<int>(xValues).Count < points.Count)
                 throw new ArgumentException("Not all x values are distinct.");
 
-            Polynomial term = new Polynomial(new List<int> { 0 });
+            var terms = new List<Polynomial>();
 
             foreach(var i in Enumerable.Range(0, points.Count))
             {
-                term = SingleTerm(points, i);
+                terms.Add(SingleTerm(points, i));
             }
 
-            return term.Add(new Polynomial(new List<int> { 0 }));
+            var sum = new Polynomial(new List<int> { });
+            foreach (var term in terms)
+            {
+                sum = sum.Add(term);
+            }
+            sum.Add(new Polynomial(new List<int> { 0 }));
+
+            return sum;
         }
 
         /// <summary>
